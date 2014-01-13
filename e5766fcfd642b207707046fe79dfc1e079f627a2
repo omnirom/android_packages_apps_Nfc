@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb5d2d02_1e812dff",
+        "filename": "src/com/android/nfc/NfcService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1000516
+      },
+      "writtenOn": "2014-01-13T17:49:28Z",
+      "side": 1,
+      "message": "0 should be SCREEN_STATE_ON_UNLOCKED",
+      "revId": "e5766fcfd642b207707046fe79dfc1e079f627a2",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
