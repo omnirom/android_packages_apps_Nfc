@@ -310,7 +310,13 @@ public class NfcService implements DeviceHostListener {
 
     @Override
     public void onRemoteEndpointDiscovered(TagEndpoint tag) {
-        sendMessage(NfcService.MSG_NDEF_TAG, tag);
+        if(mScreenState == SCREEN_STATE_OFF || mScreenState == SCREEN_STATE_ON_LOCKED) {
+            tryUnlock(tag);
+            tag.disconnect();
+        }
+        else {
+            sendMessage(NfcService.MSG_NDEF_TAG, tag);
+        }
     }
 
     /**
@@ -2562,5 +2568,26 @@ public class NfcService implements DeviceHostListener {
             pw.println(mDeviceHost.dump());
 
         }
+    }
+
+    void tryUnlock(TagEndpoint tag) {
+        if (DBG) Log.d(TAG, "Trying NFC unlock");
+
+        byte[] uid = (byte[])tag.getUid();
+        int i, j, in;
+        String [] hex = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
+        String uidStr = "";
+
+        for (j = 0 ; j < uid.length ; ++j) {
+            in = (int) uid[j] & 0xff;
+            i = (in >> 4) & 0x0f;
+            uidStr += hex[i];
+            i = in & 0x0f;
+            uidStr += hex[i];
+        }
+
+        Intent unlockIntent = new Intent("com.android.keyguard.UNLOCK_DEVICE");
+        unlockIntent.putExtra("tagUid", uidStr);
+        mContext.sendBroadcast(unlockIntent);
     }
 }
