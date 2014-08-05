@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b6ec9b0_93645c48",
+        "filename": "src/com/android/nfc/NfcService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2573,
+      "author": {
+        "id": 1000026
+      },
+      "writtenOn": "2014-08-05T13:34:46Z",
+      "side": 1,
+      "message": "add private",
+      "range": {
+        "startLine": 2573,
+        "startChar": 9,
+        "endLine": 2573,
+        "endChar": 18
+      },
+      "revId": "510f1c7e9dfdd753de222dd66ad0b74afd398720",
+      "serverId": "56841c99-7c94-43d4-bf0b-cb4707e66d55",
+      "unresolved": false
+    }
+  ]
+}
