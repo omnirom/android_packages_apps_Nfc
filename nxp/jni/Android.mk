@@ -35,6 +35,8 @@ LOCAL_MODULE_TAGS := optional
 
 # !!! Intentionally commented out, we'll stop building
 # the NXP stack in M, code will be removed in the
-# next release.
-# include $(BUILD_SHARED_LIBRARY)
+# next release
+ifneq ($(filter find7,$(TARGET_DEVICE)),)
+include $(BUILD_SHARED_LIBRARY)
+endif
 # !!!

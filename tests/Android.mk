@@ -26,6 +26,9 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_PACKAGE_NAME := NfcTests
 LOCAL_CERTIFICATE := platform
 
+ifneq ($(filter find7,$(TARGET_DEVICE)),)
+LOCAL_INSTRUMENTATION_FOR := Nfc
+else
 LOCAL_INSTRUMENTATION_FOR := NfcNci
-
+endif
 include $(BUILD_PACKAGE)
